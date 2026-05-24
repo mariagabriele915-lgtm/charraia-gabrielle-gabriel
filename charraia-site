@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Charraiá - Gabrielle & Gabriel</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: 'Trebuchet MS', sans-serif;
+    background:#fff3e6;
+    background-image:
+    linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255,255,255,0.3) 25%, transparent 25%);
+    background-size:40px 40px;
+    color:#5c2e00;
+    text-align:center;
+}
+
+header{
+    background:#f4c38b;
+    padding:50px 20px;
+    border-bottom:8px dashed #d2691e;
+    position:relative;
+}
+
+header::after{
+    content:"🎏 🎏 🎏 🎏 🎏";
+    display:block;
+    font-size:28px;
+    margin-top:20px;
+}
+
+h1{
+    font-size:50px;
+    margin:0;
+    color:#8b4513;
+    text-shadow:2px 2px #ffe2b8;
+}
+
+h2{
+    margin-top:10px;
+    font-size:28px;
+}
+
+.info{
+    margin-top:25px;
+    font-size:20px;
+    line-height:1.8;
+}
+
+.container{
+    padding:40px 20px;
+}
+
+.mensagem{
+    max-width:750px;
+    margin:auto;
+    font-size:22px;
+    line-height:1.8;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.08);
+}
+
+input{
+    padding:16px;
+    width:80%;
+    max-width:380px;
+    border-radius:14px;
+    border:3px solid #d2691e;
+    margin-top:30px;
+    font-size:16px;
+    background:#fffaf5;
+}
+
+.lista{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    margin-top:45px;
+}
+
+.card{
+    background:#fffdf9;
+    width:240px;
+    padding:22px;
+    border-radius:22px;
+    border:3px dashed #f4b15f;
+    box-shadow:0 5px 12px rgba(0,0,0,0.08);
+    transition:0.2s;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
+
+.card h3{
+    margin-top:0;
+    font-size:22px;
+}
+
+button{
+    background:#d2691e;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:14px;
+    cursor:pointer;
+    width:100%;
+    font-size:16px;
+    font-weight:bold;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.reservado{
+    background:#8c8c8c !important;
+    cursor:not-allowed;
+}
+
+footer{
+    margin-top:60px;
+    padding:35px;
+    background:#f4c38b;
+    font-size:22px;
+    border-top:8px dashed #d2691e;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🌽 Charraiá 🌽</h1>
+
+<h2>Chá de Panelas - Gabrielle & Gabriel</h2>
+
+<div class="info">
+📅 11/07/2026 • ⏰ 19:30<br><br>
+📍 Rua Manoel de Souza Brasil, 487 - Vila Atlântida
+</div>
+
+</header>
+
+<div class="container">
+
+<p class="mensagem">
+
+Nosso charraiá está chegando! ❤️<br><br>
+
+Criamos esta lista com muito carinho para quem deseja participar desse momento especial.<br>
+Escolha um presente, reserve-o e venha celebrar com a gente essa nova fase da nossa história.<br><br>
+
+🌻 Caso queira entrar no clima, venha com traje junino! 🌻
+
+</p>
+
+<input type="text" id="nome" placeholder="Digite seu nome para reservar">
+
+<div class="lista" id="lista"></div>
+
+</div>
+
+<footer>
+
+🎁 Bebida alcoólica por conta do convidado 🎁
+
+</footer>
+
+<script>
+
+const presentes = [
+
+"Air Fryer",
+"Jogo de Panelas",
+"Panela de pressão",
+"Frigideira antiaderente",
+"Assadeiras",
+"Formas para bolo",
+"Escorredor de macarrão",
+"Tábua de inox",
+"Conjunto de potes herméticos",
+"Porta temperos",
+"Escorredor de arroz",
+"Peneiras",
+"Bowl de vidro",
+"Jogo de travessas",
+"Jarra",
+"Garrafa térmica",
+"Kit de utensílios de silicone",
+"Colher de pau",
+"Abridor de latas",
+"Ralador",
+"Espremedor de alho",
+
+"Liquidificador",
+"Cafeteira",
+"Grill",
+"Sanduicheira",
+"Batedeira",
+"Chaleira elétrica",
+"Mixer",
+"Processador",
+"Torradeira",
+
+"Jogo de pratos",
+"Faqueiro",
+"Conjunto de copos",
+"Taças",
+"Xícaras",
+"Sousplat",
+"Toalha de mesa",
+"Porta guardanapos",
+
+"Cestos organizadores",
+"Potes mantimentos",
+"Lixeira inox",
+"Organizador de gaveta",
+"Cabides",
+"Caixa organizadora",
+
+"Jogo de cama queen",
+"Edredom",
+"Toalhas de banho",
+"Tapetes",
+"Almofadas",
+"Cobertor",
+
+"Baldes",
+"Pregadores",
+"Cesto de roupas",
+"Kit lavanderia"
+
+];
+
+const lista = document.getElementById("lista");
+
+presentes.forEach((presente) => {
+
+const card = document.createElement("div");
+card.className = "card";
+
+const titulo = document.createElement("h3");
+titulo.innerText = presente;
+
+const botao = document.createElement("button");
+botao.innerText = "Reservar presente 🎁";
+
+botao.onclick = () => {
+
+const nome = document.getElementById("nome").value;
+
+if(nome === ""){
+alert("Digite seu nome.");
+return;
+}
+
+botao.innerText = "Reservado por " + nome;
+botao.classList.add("reservado");
+botao.disabled = true;
+
+};
+
+card.appendChild(titulo);
+card.appendChild(botao);
+
+lista.appendChild(card);
+
+});
+
+</script>
+
+</body>
+</html>
